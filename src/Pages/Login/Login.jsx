@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ImSpinner9 } from "react-icons/im";
 import { toast } from "react-hot-toast";
 import UseAuth from "../../Hooks/UseAuth";
-import { saveUser } from "../../Api/auth";
+import { getToken, saveUser } from "../../Api/auth";
 import Container from "../../Container";
 
 const Login = () => {
@@ -27,6 +27,8 @@ const Login = () => {
       // User Login
       const result = await signIn(email, password);
 
+      await getToken(result?.user?.email);
+
       navigate(from, { replace: true });
       toast.success("Login Successful");
       // ----------------------------------------------------------------
@@ -45,6 +47,8 @@ const Login = () => {
       // save user data in database
       const dbResponse = await saveUser(result?.user);
 
+      await getToken(result?.user?.email);
+
       navigate(from, { replace: true });
       toast.success("Login Successful");
       // ----------------------------------------------------------------
@@ -60,6 +64,8 @@ const Login = () => {
 
       // save user data in database
       const dbResponse = await saveUser(result?.user);
+
+      await getToken(result?.user?.email);
 
       navigate(from, { replace: true });
       toast.success("SignUp Successful");

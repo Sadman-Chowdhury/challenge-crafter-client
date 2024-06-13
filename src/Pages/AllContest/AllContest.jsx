@@ -13,8 +13,6 @@ const AllContest = () => {
     setSelectContestType(type);
   };
 
-  // console.log(contest);
-
   return (
     <Container>
       <div className="mt-6">

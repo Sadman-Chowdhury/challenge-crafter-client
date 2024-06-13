@@ -5,6 +5,7 @@ import Home from "./../Pages/Home/Home";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import AllContest from "../Pages/AllContest/AllContest";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -29,5 +30,10 @@ export const router = createBrowserRouter([
         element: <AllContest />,
       },
     ],
+  },
+
+  {
+    path: "/dashboard",
+    element: <div></div>,
   },
 ]);

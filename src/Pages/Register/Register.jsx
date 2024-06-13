@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
 import { ImSpinner9 } from "react-icons/im";
 import UseAuth from "../../Hooks/UseAuth";
-import { saveUser } from "../../Api/auth";
+import { getToken, saveUser } from "../../Api/auth";
 
 const Register = () => {
   // ----------------------------------------------------------------
@@ -51,7 +51,7 @@ const Register = () => {
 
       // save user data in database
       const dbResponse = await saveUser(result?.user);
-
+      await getToken(result?.user?.email);
       navigate(from, { replace: true });
 
       setUploadButtonText("Upload Profile Picture");
@@ -71,7 +71,7 @@ const Register = () => {
 
       // save user data in database
       const dbResponse = await saveUser(result?.user);
-
+      await getToken(result?.user?.email);
       navigate(from, { replace: true });
       toast.success("SignUp Successful");
       // ----------------------------------------------------------------
@@ -87,7 +87,7 @@ const Register = () => {
 
       // save user data in database
       const dbResponse = await saveUser(result?.user);
-
+      await getToken(result?.user?.email);
       navigate(from, { replace: true });
       toast.success("SignUp Successful");
       // ----------------------------------------------------------------
