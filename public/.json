@@ -1,0 +1,66 @@
+[
+  {
+    "contestName": "Design Thinking Challenge",
+    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
+    "participantsCount": 150,
+    "description": "A challenge to innovate through design thinking principles.",
+    "contestType": "design",
+    "contestPrize": "Laptop"
+  },
+  {
+    "contestName": "Design Thinking Challenge",
+    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
+    "participantsCount": 150,
+    "description": "A challenge to innovate through design thinking principles.",
+    "contestType": "design",
+    "contestPrize": "Laptop"
+  },
+  {
+    "contestName": "Design Thinking Challenge",
+    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
+    "participantsCount": 150,
+    "description": "A challenge to innovate through design thinking principles.",
+    "contestType": "design",
+    "contestPrize": "Laptop"
+  },
+  {
+    "contestName": "Design Thinking Challenge",
+    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
+    "participantsCount": 150,
+    "description": "A challenge to innovate through design thinking principles.",
+    "contestType": "coding",
+    "contestPrize": "Laptop"
+  },
+  {
+    "contestName": "Design Thinking Challenge",
+    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
+    "participantsCount": 150,
+    "description": "A challenge to innovate through design thinking principles.",
+    "contestType": "writing",
+    "contestPrize": "Laptop"
+  },
+  {
+    "contestName": "Design Thinking Challenge",
+    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
+    "participantsCount": 150,
+    "description": "A challenge to innovate through design thinking principles.",
+    "contestType": "writing",
+    "contestPrize": "Laptop"
+  },
+  {
+    "contestName": "Design Thinking Challenge",
+    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
+    "participantsCount": 150,
+    "description": "A challenge to innovate through design thinking principles.",
+    "contestType": "writing",
+    "contestPrize": "Laptop"
+  },
+  {
+    "contestName": "Design Thinking Challenge",
+    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
+    "participantsCount": 150,
+    "description": "A challenge to innovate through design thinking principles.",
+    "contestType": "AI",
+    "contestPrize": "Laptop"
+  }
+]

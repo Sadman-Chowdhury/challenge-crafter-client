@@ -23,7 +23,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/allTouristSpot"
+          to="/allContest"
           className={({ isActive }) =>
             isActive
               ? "bg-cyan-500 font-bold text-white"
