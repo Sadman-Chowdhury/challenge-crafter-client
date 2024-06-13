@@ -2,6 +2,9 @@ import { useState } from "react";
 import Container from "../../Container";
 import ToggleBtnContest from "./ToggleBtnContest";
 import CodingContest from "./GetCodingContest/CodingContest";
+import DesignContest from "./GetDesignContest/DesignContest";
+import WritingContest from "./GetWritingContest/WritingContest";
+import AIContest from "./GetAIContest/AIContest";
 
 const AllContest = () => {
   const [selectContestType, setSelectContestType] = useState("coding");
@@ -28,17 +31,17 @@ const AllContest = () => {
       )}
       {selectContestType === "design" && (
         <>
-          <CodingContest />
+          <DesignContest />
         </>
       )}
       {selectContestType === "writing" && (
         <>
-          <CodingContest />
+          <WritingContest />
         </>
       )}
       {selectContestType === "AI" && (
         <>
-          <CodingContest />
+          <AIContest />
         </>
       )}
     </Container>
