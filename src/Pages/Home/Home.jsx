@@ -1,10 +1,11 @@
 import Container from "../../Container";
+import Banner from "./Banner/Banner";
 
 const Home = () => {
   return (
     <Container>
       <div>
-        <h1 className="bg-red-500">banner</h1>
+        <Banner />
       </div>
     </Container>
   );
