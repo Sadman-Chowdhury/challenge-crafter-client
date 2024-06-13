@@ -118,6 +118,7 @@ const Register = () => {
                     Welcome to Challenge Crafter
                   </p>
                 </div>
+
                 <form
                   onSubmit={handleSubmit}
                   noValidate=""

@@ -30,7 +30,7 @@ const Navbar = () => {
               : "bg-transparent text-black"
           }
         >
-          All Tourists Spot
+          All Contest
         </NavLink>
       </li>
       <li>
@@ -41,9 +41,7 @@ const Navbar = () => {
               ? "bg-cyan-500 font-bold text-white"
               : "bg-transparent text-black"
           }
-        >
-          Add Tourists Spot
-        </NavLink>
+        ></NavLink>
       </li>
       <li>
         <NavLink
@@ -55,20 +53,6 @@ const Navbar = () => {
           {/* This seems to be a duplicate link, consider revising */}
         </NavLink>
       </li>
-      {user ? (
-        " "
-      ) : (
-        <li>
-          <NavLink
-            to="/myList"
-            className={({ isActive }) =>
-              isActive ? "bg-red-500 text-white" : "bg-transparent text-black"
-            }
-          >
-            Login
-          </NavLink>
-        </li>
-      )}
     </>
   );
   // =================================================================
@@ -152,7 +136,13 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          ""
+          <div className="navbar-end">
+            <Link to="/login">
+              <button className="border-2 px-4 hover:bg-slate-600 hover:text-white py-1 bg-slate-200">
+                Login
+              </button>
+            </Link>
+          </div>
         )}
       </div>
     </Container>
