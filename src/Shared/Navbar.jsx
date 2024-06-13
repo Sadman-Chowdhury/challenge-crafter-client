@@ -1,10 +1,159 @@
+import { Link, NavLink } from "react-router-dom";
 import Container from "./../Container";
-
+import logo from "../assets/Images/logo.png";
+import UseAuth from "../Hooks/UseAuth";
 const Navbar = () => {
+  // =================================================================
+  const { user, logOut } = UseAuth();
+  console.log(user);
+
+  const navLinks = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-cyan-500 font-bold text-white"
+              : "bg-transparent text-black"
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/allTouristSpot"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-cyan-500 font-bold text-white"
+              : "bg-transparent text-black"
+          }
+        >
+          All Tourists Spot
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/addTouristSpot"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-cyan-500 font-bold text-white"
+              : "bg-transparent text-black"
+          }
+        >
+          Add Tourists Spot
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/allTouristSpot"
+          className={({ isActive }) =>
+            isActive ? "bg-cyan-500 text-white" : "bg-transparent text-black"
+          }
+        >
+          {/* This seems to be a duplicate link, consider revising */}
+        </NavLink>
+      </li>
+      {user ? (
+        " "
+      ) : (
+        <li>
+          <NavLink
+            to="/myList"
+            className={({ isActive }) =>
+              isActive ? "bg-red-500 text-white" : "bg-transparent text-black"
+            }
+          >
+            Login
+          </NavLink>
+        </li>
+      )}
+    </>
+  );
+  // =================================================================
   return (
     <Container>
-      <div>
-        <h1>navbar</h1>
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              {navLinks}
+            </ul>
+          </div>
+          <Link to="/">
+            <div className="flex items-center">
+              <div>
+                <img src={logo} className="lg:block hidden" alt="" />
+              </div>
+              <div>
+                <p className="lg:text-xl font-bold text-red-700">
+                  Challenge Crafter
+                </p>
+              </div>
+            </div>
+          </Link>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        </div>
+
+        {user && user.photoURL ? (
+          <div className="navbar-end">
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user?.photoURL}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <button onClick={logOut}>Logout</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </Container>
   );
