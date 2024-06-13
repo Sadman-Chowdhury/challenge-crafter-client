@@ -1,10 +1,19 @@
+import { FaHome, FaUsersCog } from "react-icons/fa";
+import { TbTargetArrow } from "react-icons/tb";
+import { RiListSettingsLine } from "react-icons/ri";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
+import { FaPersonThroughWindow } from "react-icons/fa6";
+import { ImProfile } from "react-icons/im";
 
 const Dashboard = () => {
-  const { user } = UseAuth();
+  const { user, logOut } = UseAuth();
+  const isAdmin = true;
+  const isCreator = false;
+
   return (
     <>
-      <div className="navbar bg-slate-900 shadow-lg shadow-white fixed z-10 ">
+      <div className="navbar shadow-2xl shadow-slate-300 fixed z-10 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -14,7 +23,7 @@ const Dashboard = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-8 lg:w-10 text-white"
+                className="h-10 w-8 lg:w-10"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -29,126 +38,68 @@ const Dashboard = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm -ml-2 dropdown-content mt-4 lg:mt-5 z-[1] shadow rounded-lg bg-slate-800 text-white w-52 lg:w-72 h-screen"
+              className="menu menu-sm -ml-2 dropdown-content mt-4 lg:mt-6 z-[1] shadow-2xl bg-slate-200 rounded-lg text-black w-52 lg:w-72 h-screen"
             >
               {isAdmin ? (
                 <>
                   <NavLink to="/dashboard/adminDashboard">
                     <li className="">
-                      <span className="text-white flex items-center">
-                        <BsGrid1X2Fill />
-                        Dashboard
-                      </span>
-                    </li>
-                  </NavLink>
-                  <NavLink to="/dashboard/addProduct">
-                    <li className="">
-                      <span className="text-white flex items-center">
-                        <GiTreeGrowth />
-                        Add Product
-                      </span>
-                    </li>
-                  </NavLink>
-                  <NavLink to="/dashboard/manageProduct">
-                    <li className="">
-                      <span className="text-white flex items-center">
-                        <MdAssignmentAdd />
-                        Manage Product
-                        <span className="text-red-500 font-bold">
-                          ({products.length})
-                        </span>
-                      </span>
-                    </li>
-                  </NavLink>
-                  <NavLink to="/dashboard/trendingProduct">
-                    <li className="">
-                      <span className="text-white flex items-center">
-                        <IoMdTrendingUp />
-                        Manage Trending Products
-                      </span>
-                    </li>
-                  </NavLink>
-                  <NavLink to="/dashboard/manageUser">
-                    <li className="">
-                      <span className="text-white flex items-center">
-                        <MdManageAccounts />
+                      <span className="flex items-center">
+                        <FaUsersCog />
                         Manage Users
-                        <span className="text-red-500 font-bold">
-                          ({users.length})
-                        </span>
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/orderInfo">
+                  <NavLink to="/dashboard/adminDashboard">
                     <li className="">
-                      <span className="text-white flex items-center">
-                        <IoBagAddSharp />
-                        Order Info
-                        <span className="text-red-500 font-bold">
-                          ({orders.length})
-                        </span>
+                      <span className="flex items-center">
+                        <RiListSettingsLine />
+                        Manage Contest
                       </span>
                     </li>
                   </NavLink>
-                  <div className="divider">Support</div>
-                  <hr />
-                  <NavLink to="/dashboard/liveChat">
-                    <li className="">
-                      <span className="text-white flex items-center">
-                        <MdMessage />
-                        Messages
-                      </span>
-                    </li>
-                  </NavLink>
-                  <NavLink to="/dashboard/productReplaceAdmin">
-                    <li className="">
-                      <span className="text-white flex items-center">
-                        <RiReplay5Fill />
-                        Product Replace
-                      </span>
-                    </li>
-                  </NavLink>
-                  <div className="divider">OR</div>
-                  <hr />
+
+                  <div className="mt-12 border-b-2 border-black mb-6"></div>
                   <NavLink to="/">
                     <li className="">
-                      <span className="text-white flex items-center">
-                        <FaHome /> HomePage
+                      <span className="flex items-center">
+                        <FaHome />
+                        Home
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/allProduct">
+                  <NavLink to="/AllContest">
                     <li className="">
-                      <span className="text-white flex items-center">
-                        <FaTree />
-                        Products
+                      <span className="flex items-center">
+                        <TbTargetArrow />
+                        All Contest
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/userCart">
+                </>
+              ) : isCreator ? (
+                <>
+                  <NavLink to="/AllContest">
                     <li className="">
-                      <span className="text-white flex items-center">
-                        <FaCartShopping />
-                        My Cart
-                        <span className="text-red-500 font-bold">
-                          ({cart.length})
-                        </span>
+                      <span className="flex items-center">
+                        <TbTargetArrow />
+                        Add Contest
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/shippingInfoUser">
-                    <li className="mb-2">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <MdLocalShipping className="text-xl" />
-                        Shipping Info
+                  <NavLink to="/AllContest">
+                    <li className="">
+                      <span className="flex items-center">
+                        <TbTargetArrow />
+                        My Created Contest
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/paymentInfoUser">
-                    <li className="mb-2">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <FaCcVisa className="text-xl" />
-                        Payment Info
+                  <NavLink to="/AllContest">
+                    <li className="">
+                      <span className="flex items-center">
+                        <TbTargetArrow />
+                        Contest Submitted
                       </span>
                     </li>
                   </NavLink>
@@ -157,71 +108,25 @@ const Dashboard = () => {
                 <>
                   <NavLink to="/dashboard/userDashboard">
                     <li className="mb-2">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <BsGrid1X2Fill className="text-xl" />
-                        Dashboard
+                      <span className=" flex items-center">
+                        <TbTargetArrow className="text-xl" />
+                        My Participated Contest
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/userCart">
+                  <NavLink to="/dashboard/userDashboard">
                     <li className="mb-2">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <FaCartShopping className="text-xl" />
-                        My Cart
-                        <span className="text-red-500 font-bold">
-                          ({cart.length})
-                        </span>
+                      <span className=" flex items-center">
+                        <FaPersonThroughWindow className="text-xl" />
+                        My Winning Contest
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/shippingInfoUser">
+                  <NavLink to="/dashboard/userDashboard">
                     <li className="mb-2">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <MdLocalShipping className="text-xl" />
-                        Shipping Info
-                      </span>
-                    </li>
-                  </NavLink>
-                  <NavLink to="/dashboard/paymentInfoUser">
-                    <li className="mb-2">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <FaCcVisa className="text-xl" />
-                        Payment Info
-                      </span>
-                    </li>
-                  </NavLink>
-                  <div className="divider">OR</div>
-                  <hr />
-                  <NavLink to="/">
-                    <li className="mb-2 ">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <FaHome className="text-xl" /> HomePage
-                      </span>
-                    </li>
-                  </NavLink>
-                  <NavLink to="/allProduct">
-                    <li className="">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <FaTree className="text-xl" />
-                        Products
-                      </span>
-                    </li>
-                  </NavLink>
-                  <div className="divider">Support</div>
-                  <hr />
-                  <NavLink to="/dashboard/liveChat">
-                    <li className="">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <MdMessage className="text-xl" />
-                        Messages
-                      </span>
-                    </li>
-                  </NavLink>
-                  <NavLink to="/dashboard/replaceProductUser">
-                    <li className="">
-                      <span className="text-white flex items-center hover:text-lime-500">
-                        <RiReplay5Fill className="text-xl" />
-                        Product Replace
+                      <span className=" flex items-center">
+                        <ImProfile className="text-xl" />
+                        My Profile
                       </span>
                     </li>
                   </NavLink>
@@ -267,6 +172,12 @@ const Dashboard = () => {
                     (Admin)
                   </p>
                 </>
+              ) : isCreator ? (
+                <>
+                  <p className="bg-gradient-to-br from-lime-400 to-green-700 text-transparent bg-clip-text font-bold text-[12px] lg:text-2xl">
+                    (Creator)
+                  </p>
+                </>
               ) : (
                 <>
                   <p className="bg-gradient-to-br from-lime-400 to-green-700 text-transparent bg-clip-text font-bold text-[12px] lg:text-2xl">
@@ -305,7 +216,7 @@ const Dashboard = () => {
               </li>
               {user ? (
                 <li>
-                  <button onClick={handleLogOut}>Logout</button>
+                  <button onClick={logOut}>Logout</button>
                 </li>
               ) : (
                 <>
