@@ -10,6 +10,8 @@ import Dashboard from "../Layout/Dashboard";
 import ManageUser from "../Components/Dashboard/Admin/ManageUser";
 import AddContest from "../Components/Dashboard/Creator/AddContest/AddContest";
 import MyCreatedContest from "../Components/Dashboard/Creator/MyCreatedContest/MyCreatedContest";
+import EditMyCreatedContest from "../Components/Dashboard/Creator/MyCreatedContest/EditMyCreatedContest";
+import { getOneContest } from "../Api/contestApi";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +71,15 @@ export const router = createBrowserRouter([
             <MyCreatedContest />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "editMyCreated-contest/:id",
+        element: (
+          <PrivateRoute>
+            <EditMyCreatedContest />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => getOneContest(params.id),
       },
     ],
   },

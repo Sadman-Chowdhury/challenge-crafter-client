@@ -1,17 +1,46 @@
-import { useState } from "react";
-import { imageUpload } from "../../../../Api/utils";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Container from "../../../../Container";
 import UseAuth from "../../../../Hooks/UseAuth";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { imageUpload } from "../../../../Api/utils";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ImSpinner3 } from "react-icons/im";
+import { updateContest } from "../../../../Api/contestApi";
+import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-import { addContest } from "../../../../Api/contestApi";
 
-const AddContest = () => {
+const EditMyCreatedContest = () => {
+  const allContests = useLoaderData();
   const navigate = useNavigate();
   const { user } = UseAuth();
+
+  // Destructure contest details
+  const {
+    _id,
+    contestName: initialContestName,
+    contestType: initialContestType,
+    startDate: initialStartDate,
+    endDate: initialEndDate,
+    contestPrice: initialContestPrice,
+    contestPrize: initialContestPrize,
+    description: initialDescription,
+    taskSubmissionText: initialTaskSubmissionText,
+    image: initialImage,
+  } = allContests;
+
+  // Initialize states with previous values
+  const [contestName, setContestName] = useState(initialContestName);
+  const [contestType, setContestType] = useState(initialContestType);
+  const [startDate, setStartDate] = useState(new Date(initialStartDate));
+  const [endDate, setEndDate] = useState(new Date(initialEndDate));
+  const [contestPrice, setContestPrice] = useState(initialContestPrice);
+  const [contestPrize, setContestPrize] = useState(initialContestPrize);
+  const [description, setDescription] = useState(initialDescription);
+  const [taskSubmissionText, setTaskSubmissionText] = useState(
+    initialTaskSubmissionText
+  );
+  const [image, setImage] = useState(initialImage);
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
 
@@ -19,37 +48,27 @@ const AddContest = () => {
     { id: 1, label: "Image Design" },
     { id: 2, label: "Article Writing" },
     { id: 3, label: "Marketing Strategy" },
-    { id: 4, label: "Digital advertisement" },
+    { id: 4, label: "Digital Advertisement" },
     { id: 5, label: "Gaming Review" },
     { id: 6, label: "Book Review" },
   ];
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-
   const handleImageChange = (file) => {
+    setImage(file);
     setUploadButtonText(file.name);
   };
 
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    const form = e.target;
 
-    const contestName = form.contestName.value;
-    const image = form.image.files[0];
-    const contestType = form.contestType.value;
-    const contestPrice = form.price.value;
-    const contestPrize = form.prize.value;
-    const description = form.description.value;
-    const taskSubmissionText = form.taskToSubmit.value;
+    const image_url = await imageUpload(image);
 
     const contestCreator = {
       name: user?.displayName,
       image: user?.photoURL,
       email: user?.email,
     };
-    const image_url = await imageUpload(image);
 
     const contestData = {
       contestName,
@@ -61,31 +80,28 @@ const AddContest = () => {
       description,
       taskSubmissionText,
       status: "pending",
-      image: image_url?.data?.display_url,
+      image: image_url?.data?.display_url || initialImage,
       contestCreator,
     };
 
     console.log(contestData);
+
     try {
-      const data = await addContest(contestData);
-      console.log(data);
-      setUploadButtonText("Uploaded!");
-      toast.success("Contest Added!");
-      navigate("/dashboard/myCreated-contest");
-    } catch (err) {
-      console.log(err);
-      toast.error(err.message);
-    } finally {
+      const data = await updateContest(_id, contestData);
+      toast.success(`${contestType} is updated to the menu successfully`);
       setLoading(false);
+      navigate("/dashboard/myCreated-contest");
+    } catch (error) {
+      toast(error.message);
     }
   };
 
   return (
     <div>
-      <h1 className="mb-24 text-white">Add Contest</h1>
+      <h1 className="mb-24 text-white">Edit Contest</h1>
       <Container>
         <div className="text-center mb-8 text-cyan-600 font-bold text-3xl">
-          Add Contest
+          Update your Contest ({initialContestName})
         </div>
         <div className="w-full flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
           <form onSubmit={handleSubmit}>
@@ -102,6 +118,8 @@ const AddContest = () => {
                     type="text"
                     placeholder="Contest Name"
                     required
+                    value={contestName}
+                    onChange={(e) => setContestName(e.target.value)}
                   />
                 </div>
                 <div className="p-4 bg-white w-full m-auto rounded-lg">
@@ -133,6 +151,8 @@ const AddContest = () => {
                     className="w-full px-4 py-3 border-cyan-300 focus:outline-cyan-500 rounded-md"
                     name="contestType"
                     id="contestType"
+                    value={contestType}
+                    onChange={(e) => setContestType(e.target.value)}
                   >
                     {contestTypes.map((type) => (
                       <option value={type.label} key={type.id}>
@@ -183,6 +203,8 @@ const AddContest = () => {
                     type="number"
                     placeholder="Price"
                     required
+                    value={contestPrice}
+                    onChange={(e) => setContestPrice(e.target.value)}
                   />
                 </div>
 
@@ -197,6 +219,8 @@ const AddContest = () => {
                     type="number"
                     placeholder="Prize"
                     required
+                    value={contestPrize}
+                    onChange={(e) => setContestPrize(e.target.value)}
                   />
                 </div>
 
@@ -211,6 +235,8 @@ const AddContest = () => {
                     type="text"
                     placeholder="Task to Submit"
                     required
+                    value={taskSubmissionText}
+                    onChange={(e) => setTaskSubmissionText(e.target.value)}
                   />
                 </div>
 
@@ -222,6 +248,8 @@ const AddContest = () => {
                     id="description"
                     className="block rounded-md focus:cyan-300 w-full h-32 px-4 py-3 text-gray-800 border border-cyan-300 focus:outline-cyan-500"
                     name="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                   ></textarea>
                 </div>
               </div>
@@ -234,7 +262,7 @@ const AddContest = () => {
               {loading ? (
                 <ImSpinner3 className="m-auto animate-spin" size={24} />
               ) : (
-                "Add Contest"
+                "Update Contest"
               )}
             </button>
           </form>
@@ -244,4 +272,4 @@ const AddContest = () => {
   );
 };
 
-export default AddContest;
+export default EditMyCreatedContest;

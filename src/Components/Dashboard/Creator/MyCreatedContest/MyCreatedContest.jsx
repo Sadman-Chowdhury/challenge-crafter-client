@@ -3,10 +3,11 @@ import Container from "../../../../Container";
 import UseToGetContestCreatedByEmail from "../../../../Hooks/UseToGetContestCreatedByEmail";
 import { MdOutlineComment } from "react-icons/md";
 import { deleteContest } from "../../../../Api/contestApi";
+import { Link } from "react-router-dom";
 
 const MyCreatedContest = () => {
   const [contests, refetch] = UseToGetContestCreatedByEmail();
-  //   console.log(contests);
+  console.log(contests);
   //  delete users
   const handleDeleteContest = (id) => {
     Swal.fire({
@@ -62,7 +63,7 @@ const MyCreatedContest = () => {
                   <td>
                     <img
                       src={item?.image}
-                      className="w-16 h-16 rounded-2xl"
+                      className="w-[60px] h-[60px] lg:rounded-full"
                       alt=""
                     />
                   </td>
@@ -92,9 +93,13 @@ const MyCreatedContest = () => {
                         Edit
                       </button>
                     ) : (
-                      <button className="bg-green-600 px-2 py-1 rounded-2xl text-white font-bold">
-                        Edit
-                      </button>
+                      <Link
+                        to={`/dashboard/editMyCreated-contest/${item?._id}`}
+                      >
+                        <button className="bg-green-600 px-2 py-1 rounded-2xl text-white font-bold">
+                          Edit
+                        </button>
+                      </Link>
                     )}
                   </td>
                   <td>
