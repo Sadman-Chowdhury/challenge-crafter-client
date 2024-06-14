@@ -8,6 +8,7 @@ import AllContest from "../Pages/AllContest/AllContest";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import ManageUser from "../Components/Dashboard/Admin/ManageUser";
+import AddContest from "../Components/Dashboard/Creator/AddContest/AddContest";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ManageUser />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "add-contest",
+        element: (
+          <PrivateRoute>
+            <AddContest />
           </PrivateRoute>
         ),
       },
