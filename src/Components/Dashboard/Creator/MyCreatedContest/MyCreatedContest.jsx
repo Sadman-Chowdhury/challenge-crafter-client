@@ -59,7 +59,7 @@ const MyCreatedContest = () => {
               {contests.map((item, index) => (
                 <tr key={item._id}>
                   <td>{index + 1}</td>
-                  <td>{item?.contestName}</td>
+                  <td className="font-bold">{item?.contestName}</td>
                   <td>
                     <img
                       src={item?.image}

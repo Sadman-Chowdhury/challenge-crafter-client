@@ -12,6 +12,7 @@ import AddContest from "../Components/Dashboard/Creator/AddContest/AddContest";
 import MyCreatedContest from "../Components/Dashboard/Creator/MyCreatedContest/MyCreatedContest";
 import EditMyCreatedContest from "../Components/Dashboard/Creator/MyCreatedContest/EditMyCreatedContest";
 import { getOneContest } from "../Api/contestApi";
+import ManageContest from "../Components/Dashboard/Admin/ManageContest";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ManageUser />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manage-contest",
+        element: (
+          <PrivateRoute>
+            <ManageContest />
           </PrivateRoute>
         ),
       },

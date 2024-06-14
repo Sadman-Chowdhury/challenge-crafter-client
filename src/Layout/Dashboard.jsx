@@ -8,8 +8,8 @@ import { ImProfile } from "react-icons/im";
 
 const Dashboard = () => {
   const { user, logOut } = UseAuth();
-  const isAdmin = false;
-  const isCreator = true;
+  const isAdmin = true;
+  const isCreator = false;
 
   return (
     <>
@@ -50,7 +50,7 @@ const Dashboard = () => {
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/adminDashboard">
+                  <NavLink to="/dashboard/manage-contest">
                     <li className="">
                       <span className="flex items-center">
                         <RiListSettingsLine />

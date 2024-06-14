@@ -41,7 +41,6 @@ const ManageUser = () => {
       }
     });
   };
-
   const handleMakeBlock = (user) => {
     axiosSecure.patch(`/users/block/${user._id}`).then((res) => {
       // console.log(res.data);
