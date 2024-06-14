@@ -6,7 +6,7 @@ const UseToGetArticleWritingContest = () => {
     queryKey: ["Article Writing"],
     queryFn: async () => {
       const res = await axiosSecure.get("/AllContest/articleWriting");
-      return res.data;
+      return res.data.filter((contest) => contest.status === "accepted");
     },
   });
   return [articleWritingContest, refetch];

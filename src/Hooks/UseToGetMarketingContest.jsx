@@ -6,7 +6,7 @@ const UseToGetMarketingContest = () => {
     queryKey: ["Marketing Strategy"],
     queryFn: async () => {
       const res = await axiosSecure.get("/AllContest/marketingStrategy");
-      return res.data;
+      return res.data.filter((contest) => contest.status === "accepted");
     },
   });
   return [marketingContest, refetch];

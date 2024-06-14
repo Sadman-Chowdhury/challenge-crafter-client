@@ -6,7 +6,7 @@ const UseToGetDigitalAdvertismentContest = () => {
     queryKey: ["Digital advertisement"],
     queryFn: async () => {
       const res = await axiosSecure.get("/AllContest/digitalAdvertis");
-      return res.data;
+      return res.data.filter((contest) => contest.status === "accepted");
     },
   });
   return [digitalAdvertismentContest, refetch];

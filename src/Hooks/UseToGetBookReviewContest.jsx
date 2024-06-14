@@ -6,7 +6,7 @@ const UseToGetBookReviewContest = () => {
     queryKey: ["Book Review"],
     queryFn: async () => {
       const res = await axiosSecure.get("/AllContest/bookReview");
-      return res.data;
+      return res.data.filter((contest) => contest.status === "accepted");
     },
   });
   return [bookReviewContest, refetch];

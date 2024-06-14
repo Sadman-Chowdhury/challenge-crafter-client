@@ -6,7 +6,7 @@ const UseToGetGamingContest = () => {
     queryKey: ["Gaming Review"],
     queryFn: async () => {
       const res = await axiosSecure.get("/AllContest/gamingReview");
-      return res.data;
+      return res.data.filter((contest) => contest.status === "accepted");
     },
   });
   return [gamingReviewContest, refetch];

@@ -6,7 +6,7 @@ const UseToGetImageDesignContest = () => {
     queryKey: ["Image design"],
     queryFn: async () => {
       const res = await axiosSecure.get("/AllContest/imageDesign");
-      return res.data;
+      return res.data.filter((contest) => contest.status === "accepted");
     },
   });
   return [imageDesignContest, refetch];
