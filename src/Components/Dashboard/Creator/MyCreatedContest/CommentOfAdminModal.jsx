@@ -1,6 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import toast from "react-hot-toast";
 
 const CommentOfAdminModal = ({ isOpen, closeModal, contest }) => {
   //   console.log(contest);

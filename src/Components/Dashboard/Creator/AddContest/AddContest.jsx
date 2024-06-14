@@ -62,7 +62,6 @@ const AddContest = () => {
       taskSubmissionText,
       participantsCount: 0,
       status: "pending",
-      comment: "",
       image: image_url?.data?.display_url,
       contestCreator,
     };

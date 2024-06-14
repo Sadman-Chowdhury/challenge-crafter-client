@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Container from "../../Container";
 import ToggleBtnContest from "./ToggleBtnContest";
-import CodingContest from "./GetCodingContest/CodingContest";
-import DesignContest from "./GetDesignContest/DesignContest";
-import WritingContest from "./GetWritingContest/WritingContest";
-import AIContest from "./GetAIContest/AIContest";
+import ImageDesignContest from "./GetImageDesignContest/ImageDesignContest";
+import ArticleWritingContest from "./GetArticleWritingContest/ArticleWritingContest";
+import MarketingContest from "./GetMarketingContest/MarketingContest";
+import DigittalAdvertisContest from "./GetDigitalAdvertisContest/DigittalAdvertisContest";
+import GamingContest from "./GetGamingContest/GamingContest";
+import BookReviewContest from "./GetBookContest/BookReviewContest";
 
 const AllContest = () => {
-  const [selectContestType, setSelectContestType] = useState("coding");
+  const [selectContestType, setSelectContestType] = useState("Image Design");
 
   const handleContestTypeSelect = (type) => {
     setSelectContestType(type);
@@ -22,24 +24,34 @@ const AllContest = () => {
         />
       </div>
 
-      {selectContestType === "coding" && (
+      {selectContestType === "Image Design" && (
         <>
-          <CodingContest />
+          <ImageDesignContest />
         </>
       )}
-      {selectContestType === "design" && (
+      {selectContestType === "Marketing Strategy" && (
         <>
-          <DesignContest />
+          <MarketingContest />
         </>
       )}
-      {selectContestType === "writing" && (
+      {selectContestType === "Article Writing" && (
         <>
-          <WritingContest />
+          <ArticleWritingContest />
         </>
       )}
-      {selectContestType === "AI" && (
+      {selectContestType === "Digital advertisement" && (
         <>
-          <AIContest />
+          <DigittalAdvertisContest />
+        </>
+      )}
+      {selectContestType === "Gaming Review" && (
+        <>
+          <GamingContest />
+        </>
+      )}
+      {selectContestType === "Book Review" && (
+        <>
+          <BookReviewContest />
         </>
       )}
     </Container>

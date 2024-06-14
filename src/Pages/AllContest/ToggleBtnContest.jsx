@@ -6,44 +6,64 @@ const ToggleBtnContest = ({ handleContestTypeSelect, selectContestType }) => {
       <div className="flex flex-col lg:flex-row items-center justify-center mt-20 lg:mt-10 mb-12">
         <div className="flex flex-col lg:flex-row">
           <button
-            onClick={() => handleContestTypeSelect("coding")}
+            onClick={() => handleContestTypeSelect("Image Design")}
             className={
-              selectContestType === "coding"
+              selectContestType === "Image Design"
                 ? "border-2    border-cyan-400 px-2 w-[120px] bg-cyan-500 text-white font-semibold"
                 : "border-2   border-cyan-400 px-2 w-[120px] hover:bg-cyan-500 hover:text-white font-semibold"
             }
           >
-            Coding
+            Image Design
           </button>
           <button
-            onClick={() => handleContestTypeSelect("design")}
+            onClick={() => handleContestTypeSelect("Article Writing")}
             className={
-              selectContestType === "design"
+              selectContestType === "Article Writing"
                 ? "border-2  border-cyan-400 px-2 w-[120px] bg-cyan-500 text-white font-semibold"
                 : "border-2  border-cyan-400 px-2 w-[120px] hover:bg-cyan-500 hover:text-white font-semibold"
             }
           >
-            Design
+            Article Writing
           </button>
           <button
-            onClick={() => handleContestTypeSelect("writing")}
+            onClick={() => handleContestTypeSelect("Marketing Strategy")}
             className={
-              selectContestType === "writing"
+              selectContestType === "Marketing Strategy"
                 ? "border-2 border-l-0 border-cyan-400 px-2 w-[120px] bg-cyan-500 text-white font-semibold"
                 : "border-2 border-l-0 border-cyan-400 px-2 w-[120px] hover:bg-cyan-500 hover:text-white font-semibold"
             }
           >
-            Writing
+            Marketing Strategy
           </button>
           <button
-            onClick={() => handleContestTypeSelect("AI")}
+            onClick={() => handleContestTypeSelect("Digital advertisement")}
             className={
-              selectContestType === "AI"
+              selectContestType === "Digital advertisement"
                 ? "border-2   border-cyan-400 px-2 w-[120px] bg-cyan-500 text-white font-semibold"
                 : "border-2   border-cyan-400 px-2 w-[120px] hover:bg-cyan-500 hover:text-white font-semibold"
             }
           >
-            AI
+            Digital advertisement
+          </button>
+          <button
+            onClick={() => handleContestTypeSelect("Gaming Review")}
+            className={
+              selectContestType === "Gaming Review"
+                ? "border-2   border-cyan-400 px-2 w-[120px] bg-cyan-500 text-white font-semibold"
+                : "border-2   border-cyan-400 px-2 w-[120px] hover:bg-cyan-500 hover:text-white font-semibold"
+            }
+          >
+            Gaming Review
+          </button>
+          <button
+            onClick={() => handleContestTypeSelect("Book Review")}
+            className={
+              selectContestType === "Book Review"
+                ? "border-2   border-cyan-400 px-2 w-[120px] bg-cyan-500 text-white font-semibold"
+                : "border-2   border-cyan-400 px-2 w-[120px] hover:bg-cyan-500 hover:text-white font-semibold"
+            }
+          >
+            Book Review
           </button>
         </div>
       </div>
