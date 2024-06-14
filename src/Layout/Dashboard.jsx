@@ -87,7 +87,7 @@ const Dashboard = () => {
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/AllContest">
+                  <NavLink to="/dashboard/myCreated-contest">
                     <li className="">
                       <span className="flex items-center">
                         <TbTargetArrow />

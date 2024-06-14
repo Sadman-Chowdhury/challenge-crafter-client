@@ -5,8 +5,6 @@ import UseAuth from "../../../../Hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { TbFidgetSpinner } from "react-icons/tb";
-import { FaUser } from "react-icons/fa";
 import { ImSpinner3 } from "react-icons/im";
 import toast from "react-hot-toast";
 import { addContest } from "../../../../Api/contestApi";

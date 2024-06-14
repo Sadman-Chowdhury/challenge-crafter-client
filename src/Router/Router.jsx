@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import ManageUser from "../Components/Dashboard/Admin/ManageUser";
 import AddContest from "../Components/Dashboard/Creator/AddContest/AddContest";
+import MyCreatedContest from "../Components/Dashboard/Creator/MyCreatedContest/MyCreatedContest";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddContest />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myCreated-contest",
+        element: (
+          <PrivateRoute>
+            <MyCreatedContest />
           </PrivateRoute>
         ),
       },
