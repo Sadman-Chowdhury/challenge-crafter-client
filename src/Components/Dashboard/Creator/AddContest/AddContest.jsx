@@ -60,6 +60,7 @@ const AddContest = () => {
       contestPrize,
       description,
       taskSubmissionText,
+      status: "pending",
       image: image_url?.data?.display_url,
       contestCreator,
     };

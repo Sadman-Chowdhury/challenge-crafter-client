@@ -1,9 +1,39 @@
+import Swal from "sweetalert2";
 import Container from "../../../../Container";
 import UseToGetContestCreatedByEmail from "../../../../Hooks/UseToGetContestCreatedByEmail";
+import { MdOutlineComment } from "react-icons/md";
+import { deleteContest } from "../../../../Api/contestApi";
 
 const MyCreatedContest = () => {
   const [contests, refetch] = UseToGetContestCreatedByEmail();
   //   console.log(contests);
+  //  delete users
+  const handleDeleteContest = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteContest(id).then((res) => {
+          console.log(res);
+          if (res.deletedCount > 0) {
+            // console.log(res);
+            Swal.fire({
+              title: "Deleted!",
+              text: "Contest has been deleted.",
+              icon: "success",
+            });
+            refetch();
+          }
+        });
+      }
+    });
+  };
   return (
     <div>
       <h1 className="mb-24 text-white">Add Contest</h1>
@@ -17,6 +47,7 @@ const MyCreatedContest = () => {
                 <th>Contest Name</th>
                 <th>Img</th>
                 <th>Status</th>
+                <th>Admin Comment</th>
                 <th>Submission</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -24,40 +55,67 @@ const MyCreatedContest = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
-                <td>
-                  <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">Hart Hagerty</div>
-                      <div className="text-sm opacity-50">United States</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  Zemlak, Daniel and Leannon
-                  <br />
-                  <span className="badge badge-ghost badge-sm">
-                    Desktop Support Technician
-                  </span>
-                </td>
-                <td>Purple</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
-              </tr>
+              {contests.map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1}</td>
+                  <td>{item?.contestName}</td>
+                  <td>
+                    <img
+                      src={item?.image}
+                      className="w-16 h-16 rounded-2xl"
+                      alt=""
+                    />
+                  </td>
+
+                  <td>
+                    <span className="bg-orange-400 px-2 py-1 rounded-2xl text-white font-bold">
+                      {item?.status}
+                    </span>
+                  </td>
+                  <td>
+                    <button className="text-4xl text-green-500">
+                      <MdOutlineComment />
+                    </button>
+                  </td>
+                  <td>
+                    <button className="bg-cyan-600 px-2 py-1 rounded-2xl text-white font-bold">
+                      Submission
+                    </button>
+                  </td>
+
+                  <td>
+                    {item?.status === "accepted" ? (
+                      <button
+                        disabled
+                        className="bg-green-600 px-2 py-1 rounded-2xl text-white font-bold"
+                      >
+                        Edit
+                      </button>
+                    ) : (
+                      <button className="bg-green-600 px-2 py-1 rounded-2xl text-white font-bold">
+                        Edit
+                      </button>
+                    )}
+                  </td>
+                  <td>
+                    {item?.status === "accepted" ? (
+                      <button
+                        disabled
+                        className="bg-red-600 px-2 py-1 rounded-2xl text-white font-bold"
+                      >
+                        Delete
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleDeleteContest(item?._id)}
+                        className="bg-red-600 px-2 py-1 rounded-2xl text-white font-bold"
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

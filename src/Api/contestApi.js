@@ -14,3 +14,8 @@ export const addContest = async (contestData) => {
   const { data } = await axiosSecure.post("/addContest", contestData);
   return data;
 };
+
+export const deleteContest = async (id) => {
+  const { data } = await axiosSecure.delete(`/deleteContest/${id}`);
+  return data;
+};
