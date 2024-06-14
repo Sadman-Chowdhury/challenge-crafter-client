@@ -29,3 +29,10 @@ export const updateContest = async (id, contestData) => {
   const { data } = await axiosSecure.patch(`/updateContest/${id}`, contestData);
   return data;
 };
+
+export const commentContest = async (id, { comment }) => {
+  const { data } = await axiosSecure.patch(`/allContest/comment/${id}`, {
+    comment,
+  });
+  return data;
+};

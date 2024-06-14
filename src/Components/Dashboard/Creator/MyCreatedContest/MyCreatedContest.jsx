@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const MyCreatedContest = () => {
   const [contests, refetch] = UseToGetContestCreatedByEmail();
   console.log(contests);
-  //  delete users
+
   const handleDeleteContest = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -37,7 +37,7 @@ const MyCreatedContest = () => {
   };
   return (
     <div>
-      <h1 className="mb-24 text-white">Add Contest</h1>
+      <h1 className="mb-24 text-white">my Contest</h1>
       <Container>
         <div className="overflow-x-auto">
           <table className="table">

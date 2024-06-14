@@ -17,7 +17,7 @@ const ManageUser = () => {
     axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
       // console.log(res.data);
       if (res.data.modifiedCount > 0) {
-        toast(`${user.name} Is Now Admin`);
+        toast.success(`${user.name} Is Now Admin`);
         refetch();
       }
     });
@@ -27,7 +27,7 @@ const ManageUser = () => {
     axiosSecure.patch(`/users/creator/${user._id}`).then((res) => {
       // console.log(res.data);
       if (res.data.modifiedCount > 0) {
-        toast(`${user.name} Is Now A Creator`);
+        toast.success(`${user.name} Is Now A Creator`);
         refetch();
       }
     });
@@ -36,7 +36,7 @@ const ManageUser = () => {
     axiosSecure.patch(`/users/user/${user._id}`).then((res) => {
       // console.log(res.data);
       if (res.data.modifiedCount > 0) {
-        toast(`${user.name} Is Now A Creator`);
+        toast.success(`${user.name} Is Now A Creator`);
         refetch();
       }
     });
@@ -45,7 +45,7 @@ const ManageUser = () => {
     axiosSecure.patch(`/users/block/${user._id}`).then((res) => {
       // console.log(res.data);
       if (res.data.modifiedCount > 0) {
-        toast(`${user.name} Is Now Blocked`);
+        toast.success(`${user.name} Is Now Blocked`);
         refetch();
       }
     });
@@ -54,7 +54,7 @@ const ManageUser = () => {
     axiosSecure.patch(`/users/unblock/${user._id}`).then((res) => {
       // console.log(res.data);
       if (res.data.modifiedCount > 0) {
-        toast(`${user.name} Is Now Unblocked`);
+        toast.success(`${user.name} Is Now Unblocked`);
         refetch();
       }
     });
