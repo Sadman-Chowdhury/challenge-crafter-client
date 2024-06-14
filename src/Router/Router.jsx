@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import AllContest from "../Pages/AllContest/AllContest";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
+import ManageUser from "../Components/Dashboard/Admin/ManageUser";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +44,13 @@ export const router = createBrowserRouter([
 
     children: [
       {
-        path: "",
+        path: "manage-user",
+        index: true,
+        element: (
+          <PrivateRoute>
+            <ManageUser />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -42,7 +42,7 @@ const Dashboard = () => {
             >
               {isAdmin ? (
                 <>
-                  <NavLink to="/dashboard/adminDashboard">
+                  <NavLink to="/dashboard/manage-user">
                     <li className="">
                       <span className="flex items-center">
                         <FaUsersCog />
