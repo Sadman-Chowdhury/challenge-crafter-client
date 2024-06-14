@@ -3,7 +3,7 @@ import Container from "../../../Container";
 import UseUser from "../../../Hooks/UseUser";
 import { AiFillMediumCircle } from "react-icons/ai";
 import Swal from "sweetalert2";
-import { FaDeleteLeft } from "react-icons/fa6";
+import { FaDeleteLeft, FaSquareArrowUpRight } from "react-icons/fa6";
 import { deleteUser } from "../../../Api/user";
 import axiosSecure from "../../../Api";
 import { toast } from "react-hot-toast";
@@ -12,6 +12,54 @@ const ManageUser = () => {
   const [users, refetch] = UseUser();
   //   console.log(users);
 
+  // ===========================Make Admin & Moderator ======================================
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      // console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        toast(`${user.name} Is Now Admin`);
+        refetch();
+      }
+    });
+  };
+
+  const handleMakeCreator = (user) => {
+    axiosSecure.patch(`/users/creator/${user._id}`).then((res) => {
+      // console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        toast(`${user.name} Is Now A Creator`);
+        refetch();
+      }
+    });
+  };
+  const handleMakeUser = (user) => {
+    axiosSecure.patch(`/users/user/${user._id}`).then((res) => {
+      // console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        toast(`${user.name} Is Now A Creator`);
+        refetch();
+      }
+    });
+  };
+
+  const handleMakeBlock = (user) => {
+    axiosSecure.patch(`/users/block/${user._id}`).then((res) => {
+      // console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        toast(`${user.name} Is Now Blocked`);
+        refetch();
+      }
+    });
+  };
+  const handleMakeUnblock = (user) => {
+    axiosSecure.patch(`/users/unblock/${user._id}`).then((res) => {
+      // console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        toast(`${user.name} Is Now Unblocked`);
+        refetch();
+      }
+    });
+  };
   //  delete users
   const handleDeleteUser = (id) => {
     Swal.fire({
@@ -56,6 +104,7 @@ const ManageUser = () => {
                 <th>Make Creator</th>
                 <th>Make User</th>
                 <th>Block</th>
+                <th>Unblock</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -71,7 +120,7 @@ const ManageUser = () => {
                       "Admin"
                     ) : (
                       <button
-                        // onClick={() => handleMakeAdmin(item)}
+                        onClick={() => handleMakeAdmin(item)}
                         className="px-4 py-3 rounded-lg bg-cyan-500"
                       >
                         <FaUser className="text-white text-xl" />
@@ -79,15 +128,15 @@ const ManageUser = () => {
                     )}
                   </td>
                   <td>
-                    {item.role === "moderator" ? (
+                    {item.role === "creator" ? (
                       <>
                         <button className="px-4 py-3 rounded-lg bg-white">
-                          <AiFillMediumCircle className="text-orange-500 text-xl" />
+                          <AiFillMediumCircle className="text-green-500 text-xl" />
                         </button>
                       </>
                     ) : (
                       <button
-                        // onClick={() => handleMakeModerator(item)}
+                        onClick={() => handleMakeCreator(item)}
                         className="px-4 py-3 rounded-lg bg-cyan-500"
                       >
                         <FaUser className="text-white text-xl" />
@@ -95,23 +144,54 @@ const ManageUser = () => {
                     )}
                   </td>
                   <td>
-                    <button
-                      // onClick={() => handleMakeModerator(item)}
-                      className="px-4 py-3 rounded-lg bg-cyan-500"
-                    >
-                      <FaUser className="text-white text-xl" />
-                    </button>
+                    {item.role === "user" ? (
+                      <>
+                        <button className="px-4 py-3 rounded-lg bg-white">
+                          <FaSquareArrowUpRight className="text-green-500 text-xl" />
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        onClick={() => handleMakeUser(item)}
+                        className="px-4 py-3 rounded-lg bg-cyan-500"
+                      >
+                        <FaUser className="text-white text-xl" />
+                      </button>
+                    )}
                   </td>
                   <td>
-                    <button
-
-                    // onClick={() => handleDeleteUser(item._id)}
-                    >
-                      <span className="text-2xl text-red-600 hover:text-orange-500">
-                        <FaUserSlash />
-                      </span>
-                    </button>
+                    {item?.role === "block" ? (
+                      <div className="">
+                        <span className="text-2xl text-red-600 hover:text-orange-500">
+                          <FaUserSlash />
+                        </span>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => handleMakeBlock(item)}
+                        className="px-4 py-3 rounded-lg bg-cyan-500"
+                      >
+                        <FaUser className="text-white text-xl" />
+                      </button>
+                    )}
                   </td>
+                  <td>
+                    {item?.role === "block" ? (
+                      <button
+                        onClick={() => handleMakeUnblock(item)}
+                        className="border-2 px-2 py-1 bg-cyan-300 rounded-lg font-bold"
+                      >
+                        Unblock
+                      </button>
+                    ) : (
+                      <div className="">
+                        <span className="text-2xl text-green-600 hover:text-orange-500">
+                          <FaUser />
+                        </span>
+                      </div>
+                    )}
+                  </td>
+
                   <td>
                     <button onClick={() => handleDeleteUser(item._id)}>
                       <span className="text-2xl text-red-600 hover:text-orange-500">
