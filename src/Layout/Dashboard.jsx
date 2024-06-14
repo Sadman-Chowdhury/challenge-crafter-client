@@ -8,8 +8,8 @@ import { ImProfile } from "react-icons/im";
 
 const Dashboard = () => {
   const { user, logOut } = UseAuth();
-  const isAdmin = true;
-  const isCreator = false;
+  const isAdmin = false;
+  const isCreator = true;
 
   return (
     <>

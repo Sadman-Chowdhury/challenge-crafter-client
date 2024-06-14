@@ -4,9 +4,22 @@ import UseToGetContestCreatedByEmail from "../../../../Hooks/UseToGetContestCrea
 import { MdOutlineComment } from "react-icons/md";
 import { deleteContest } from "../../../../Api/contestApi";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import CommentOfAdminModal from "./CommentOfAdminModal";
 
 const MyCreatedContest = () => {
   const [contests, refetch] = UseToGetContestCreatedByEmail();
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedContest, setSelectedContest] = useState(null);
+
+  const handleOpenModal = (contest) => {
+    setSelectedContest(contest);
+    setIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsOpen(false);
+  };
   console.log(contests);
 
   const handleDeleteContest = (id) => {
@@ -74,7 +87,10 @@ const MyCreatedContest = () => {
                     </span>
                   </td>
                   <td>
-                    <button className="text-4xl text-green-500">
+                    <button
+                      onClick={() => handleOpenModal(item)}
+                      className="text-4xl text-green-500"
+                    >
                       <MdOutlineComment />
                     </button>
                   </td>
@@ -125,6 +141,13 @@ const MyCreatedContest = () => {
           </table>
         </div>
       </Container>
+      {selectedContest && (
+        <CommentOfAdminModal
+          isOpen={isOpen}
+          closeModal={handleCloseModal}
+          contest={selectedContest}
+        />
+      )}
     </div>
   );
 };
