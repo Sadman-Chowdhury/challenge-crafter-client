@@ -36,3 +36,10 @@ export const commentContest = async (id, { comment }) => {
   });
   return data;
 };
+
+export const bannerContests = async (type) => {
+  const { data } = await axiosSecure.get(
+    `/AllContests/contestType?contestType=${type}`
+  );
+  return data;
+};

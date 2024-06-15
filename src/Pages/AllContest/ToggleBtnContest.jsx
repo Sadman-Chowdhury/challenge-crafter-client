@@ -29,8 +29,8 @@ const ToggleBtnContest = ({ handleContestTypeSelect, selectContestType }) => {
             onClick={() => handleContestTypeSelect("Marketing Strategy")}
             className={
               selectContestType === "Marketing Strategy"
-                ? "border-2 border-l-0 border-cyan-400 px-2 w-[120px] bg-cyan-500 text-white font-semibold"
-                : "border-2 border-l-0 border-cyan-400 px-2 w-[120px] hover:bg-cyan-500 hover:text-white font-semibold"
+                ? "border-2  border-cyan-400 px-2 w-[120px] bg-cyan-500 text-white font-semibold"
+                : "border-2  border-cyan-400 px-2 w-[120px] hover:bg-cyan-500 hover:text-white font-semibold"
             }
           >
             Marketing Strategy

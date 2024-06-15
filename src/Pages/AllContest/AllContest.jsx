@@ -9,7 +9,7 @@ import GamingContest from "./GetGamingContest/GamingContest";
 import BookReviewContest from "./GetBookContest/BookReviewContest";
 
 const AllContest = () => {
-  const [selectContestType, setSelectContestType] = useState("Image Design");
+  const [selectContestType, setSelectContestType] = useState("Gaming Review");
 
   const handleContestTypeSelect = (type) => {
     setSelectContestType(type);
