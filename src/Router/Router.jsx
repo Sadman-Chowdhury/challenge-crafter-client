@@ -13,6 +13,7 @@ import MyCreatedContest from "../Components/Dashboard/Creator/MyCreatedContest/M
 import EditMyCreatedContest from "../Components/Dashboard/Creator/MyCreatedContest/EditMyCreatedContest";
 import { getOneContest } from "../Api/contestApi";
 import ManageContest from "../Components/Dashboard/Admin/ManageContest";
+import ContestDetails from "../Pages/AllContest/ContestDetails/ContestDetails";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,15 @@ export const router = createBrowserRouter([
       {
         path: "/allContest",
         element: <AllContest />,
+      },
+      {
+        path: "/contestDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ContestDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => getOneContest(params.id),
       },
     ],
   },

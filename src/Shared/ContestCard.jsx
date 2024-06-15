@@ -1,4 +1,5 @@
 import { FaUser } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const sliceDescription = (description, wordLimit) => {
   const words = description.split(" ");
@@ -12,16 +13,16 @@ const ContestCard = ({ contest }) => {
       <figure>
         <img
           src={contest?.image}
-          className="w-full h-48 lg:h-64 object-cover rounded-t-lg"
+          className="w-full lg:h-44 object-cover rounded-tl-full"
           alt="contest"
         />
       </figure>
       <div className="card-body p-4">
-        <h2 className="text-xl lg:text-2xl font-bold font-Rancho text-cyan-400 uppercase border-b-2 border-b-cyan-100 mb-2">
+        <h2 className="w-full h-[80px] text-xl lg:text-2xl font-bold font-Rancho text-cyan-400 uppercase border-b-2 border-b-cyan-100 mb-2">
           {contest?.contestName}
         </h2>
 
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between w-full h-[30px] mb-2">
           <div>
             <p className="px-2 bg-slate-300 rounded-full">
               <span className="flex items-center gap-1 text-sm">
@@ -31,9 +32,11 @@ const ContestCard = ({ contest }) => {
             </p>
           </div>
           <div>
-            <button className="bg-slate-300 px-3 py-1 rounded-full text-sm">
-              Details
-            </button>
+            <Link to={`/contestDetails/${contest?._id}`}>
+              <button className="bg-slate-400 hover:bg-cyan-600 hove:text-white font-bold px-3 py-1 rounded-full text-sm">
+                Details
+              </button>
+            </Link>
           </div>
         </div>
         <p className="text-slate-500 leading-tight">

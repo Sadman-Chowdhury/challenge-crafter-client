@@ -5,7 +5,7 @@ const DigittalAdvertisContest = () => {
   const [digitalAdvertismentContest] = UseToGetDigitalAdvertismentContest();
   return (
     <div>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1  lg:grid-cols-3 gap-6">
         {digitalAdvertismentContest.map((item) => (
           <ContestCard key={item._id} contest={item} />
         ))}

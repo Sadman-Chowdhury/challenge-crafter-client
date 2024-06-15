@@ -2,10 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import Container from "./../Container";
 import logo from "../assets/Images/logo.png";
 import UseAuth from "../Hooks/UseAuth";
+
 const Navbar = () => {
   // =================================================================
   const { user, logOut } = UseAuth();
-  console.log(user);
+  // console.log(user);
 
   const navLinks = (
     <>
@@ -35,22 +36,24 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/addTouristSpot"
+          to="/dummy"
           className={({ isActive }) =>
             isActive
               ? "bg-cyan-500 font-bold text-white"
               : "bg-transparent text-black"
           }
-        ></NavLink>
+        >
+          Leader-board
+        </NavLink>
       </li>
       <li>
         <NavLink
-          to="/allTouristSpot"
+          to="/about"
           className={({ isActive }) =>
             isActive ? "bg-cyan-500 text-white" : "bg-transparent text-black"
           }
         >
-          {/* This seems to be a duplicate link, consider revising */}
+          About Us
         </NavLink>
       </li>
     </>
@@ -79,14 +82,14 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navLinks}
             </ul>
           </div>
           <Link to="/">
             <div className="flex items-center">
-              <div>
+              <div className="animate-bounce">
                 <img src={logo} className="lg:block hidden" alt="" />
               </div>
               <div>
@@ -110,15 +113,12 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={user?.photoURL}
-                  />
+                  <img alt="User avatar" src={user?.photoURL} />
                 </div>
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li className="ml-3">{user?.displayName}</li>
                 <li>
