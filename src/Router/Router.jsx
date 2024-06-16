@@ -14,6 +14,7 @@ import EditMyCreatedContest from "../Components/Dashboard/Creator/MyCreatedConte
 import { getOneContest } from "../Api/contestApi";
 import ManageContest from "../Components/Dashboard/Admin/ManageContest";
 import ContestDetails from "../Pages/AllContest/ContestDetails/ContestDetails";
+import Payment from "../Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,14 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => getOneContest(params.id),
+      },
+      {
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
       },
     ],
   },

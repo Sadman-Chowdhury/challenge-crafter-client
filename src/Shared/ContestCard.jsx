@@ -33,7 +33,7 @@ const ContestCard = ({ contest }) => {
           </div>
           <div>
             <Link to={`/contestDetails/${contest?._id}`}>
-              <button className="bg-slate-400 hover:bg-cyan-600 hove:text-white font-bold px-3 py-1 rounded-full text-sm">
+              <button className="bg-slate-400 hover:bg-cyan-600 hover:text-white font-bold px-3 py-1 rounded-full text-sm">
                 Details
               </button>
             </Link>

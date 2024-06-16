@@ -1,11 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Container from "../../../Container";
 import { useState, useEffect } from "react";
 
 const ContestDetails = () => {
   const contest = useLoaderData();
-  console.log(contest);
-
+  const navigate = useNavigate();
   const [timeUntilStart, setTimeUntilStart] = useState({});
   const [timeUntilEnd, setTimeUntilEnd] = useState({});
 
@@ -36,7 +35,7 @@ const ContestDetails = () => {
   };
 
   const renderCountdown = (time) => {
-    if (time.days < 0) return <p>Contest has ended.</p>;
+    if (time.days < 0) return <p>Contest has started.</p>;
 
     return (
       <div className="flex justify-center space-x-4 text-lg font-bold">
@@ -56,6 +55,9 @@ const ContestDetails = () => {
     );
   };
 
+  const handleRegisterClick = () => {
+    navigate("/payment", { state: { contest } });
+  };
   return (
     <Container>
       <div className="max-w-4xl mx-auto p-6 bg-gradient-to-r from-cyan-100 to-white shadow-2xl rounded-lg">
@@ -72,10 +74,18 @@ const ContestDetails = () => {
           </div>
         </div>
         <div className="mb-6 p-4 bg-white rounded-md shadow-md">
-          <h3 className="text-2xl font-semibold mb-2">Description</h3>
+          <h3 className="text-2xl font-semibold mb-2">Description </h3>
+          <div className="flex items-end justify-end">
+            <button
+              onClick={handleRegisterClick}
+              className="border-2 px-3 py-1 bg-cyan-700 text-white hover:bg-cyan-500 font-bold rounded-2xl mb-2"
+            >
+              Register
+            </button>
+          </div>
           <p className="text-gray-700">{contest?.description}</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col lg:flex-row gap-3">
           <div className="mb-6 p-4 bg-white rounded-md shadow-md">
             <h3 className="text-2xl font-semibold mb-2">Days left To Start</h3>
             {renderCountdown(timeUntilStart)}
@@ -139,6 +149,8 @@ const ContestDetails = () => {
           )}
         </div>
       </div>
+
+      {/* ------- */}
     </Container>
   );
 };
