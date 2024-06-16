@@ -20,7 +20,7 @@ const MyCreatedContest = () => {
   const handleCloseModal = () => {
     setIsOpen(false);
   };
-  console.log(contests);
+  // console.log(contests);
 
   const handleDeleteContest = (id) => {
     Swal.fire({

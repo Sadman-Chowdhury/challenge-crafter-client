@@ -3,13 +3,16 @@ import { TbTargetArrow } from "react-icons/tb";
 import { RiListSettingsLine } from "react-icons/ri";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
-import { FaPersonThroughWindow } from "react-icons/fa6";
+import { FaBookOpen, FaPersonThroughWindow } from "react-icons/fa6";
 import { ImProfile } from "react-icons/im";
+import UseAdmin from "../Hooks/UseAdmin";
+import UseCreator from "../Hooks/UseCreator";
 
 const Dashboard = () => {
   const { user, logOut } = UseAuth();
-  const isAdmin = true;
-  const isCreator = false;
+  const [isAdmin] = UseAdmin();
+  const [isCreator] = UseCreator();
+  console.log(isCreator);
 
   return (
     <>
@@ -43,7 +46,7 @@ const Dashboard = () => {
               {isAdmin ? (
                 <>
                   <NavLink to="/dashboard/manage-user">
-                    <li className="">
+                    <li className="mt-6">
                       <span className="flex items-center">
                         <FaUsersCog />
                         Manage Users
@@ -106,8 +109,8 @@ const Dashboard = () => {
                 </>
               ) : (
                 <>
-                  <NavLink to="/dashboard/userDashboard">
-                    <li className="mb-2">
+                  <NavLink to="/dashboard/myParticipatedContest">
+                    <li className="mb-2 mt-6">
                       <span className=" flex items-center">
                         <TbTargetArrow className="text-xl" />
                         My Participated Contest
@@ -127,6 +130,24 @@ const Dashboard = () => {
                       <span className=" flex items-center">
                         <ImProfile className="text-xl" />
                         My Profile
+                      </span>
+                    </li>
+                  </NavLink>
+                  <div className="mt-12 border-b-2 border-black mb-6"></div>
+
+                  <NavLink to="/">
+                    <li className="mb-2">
+                      <span className=" flex items-center">
+                        <FaHome className="text-xl" />
+                        Home
+                      </span>
+                    </li>
+                  </NavLink>
+                  <NavLink to="/allContest">
+                    <li className="mb-2">
+                      <span className=" flex items-center">
+                        <FaBookOpen className="text-xl" />
+                        All Contest
                       </span>
                     </li>
                   </NavLink>

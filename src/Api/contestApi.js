@@ -38,3 +38,8 @@ export const bannerContests = async (type) => {
   );
   return data;
 };
+
+export const UpdateParticipantsCounts = async (id) => {
+  const { data } = await axiosSecure.patch(`/updateParticipantsCounts/${id}`);
+  return data;
+};

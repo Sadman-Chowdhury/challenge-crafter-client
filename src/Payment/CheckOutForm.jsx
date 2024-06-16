@@ -11,6 +11,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
 import axiosSecure from "../Api";
 import { payment } from "../Api/utils";
+import { UpdateParticipantsCounts } from "../Api/contestApi";
 
 const CheckOutForm = () => {
   const stripe = useStripe();
@@ -104,8 +105,10 @@ const CheckOutForm = () => {
         contest,
       };
 
+      // Update participants count
+      await UpdateParticipantsCounts(contest._id);
       const data = await payment(paymentInfo);
-      console.log(data);
+      // console.log(data);
     }
   };
 
@@ -182,7 +185,7 @@ const CheckOutForm = () => {
           </div>
           <div className="mt-6 lg:ml-12 flex items-center justify-end">
             <button
-              className="bg-white mb-44 text-black font-bold py-2 px-6 rounded-md transition duration-300 ease-in-out hover:bg-cyan-400 hover:text-white"
+              className="bg-cyan-600  text-white mb-44  font-bold py-2 px-6 rounded-md transition duration-300 ease-in-out hover:bg-cyan-900 hover:text-white"
               type="submit"
               disabled={!stripe || !clientSecret || paymentCompleted}
             >
