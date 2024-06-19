@@ -43,3 +43,27 @@ export const UpdateParticipantsCounts = async (id) => {
   const { data } = await axiosSecure.patch(`/updateParticipantsCounts/${id}`);
   return data;
 };
+
+export const getParticipatedContestData = async (id) => {
+  const { data } = await axiosSecure(`/getParticipatedContestData/${id}`);
+  return data;
+};
+
+export const postSubmissionDetails = async (contestId, submissionDetails) => {
+  try {
+    const response = await axiosSecure.post("/submit-contest-task", {
+      contestId,
+      submissionDetails,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error posting submission details:", error);
+    throw error;
+  }
+};
+
+//contest winner details
+export const postContestWinner = async (contestData) => {
+  const { data } = await axiosSecure.post("/postContestWinner", contestData);
+  return data;
+};

@@ -12,7 +12,7 @@ const Dashboard = () => {
   const { user, logOut } = UseAuth();
   const [isAdmin] = UseAdmin();
   const [isCreator] = UseCreator();
-  console.log(isCreator);
+  // console.log(user);
 
   return (
     <>
@@ -98,7 +98,7 @@ const Dashboard = () => {
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/AllContest">
+                  <NavLink to="/dashboard/contest-submitted-page">
                     <li className="">
                       <span className="flex items-center">
                         <TbTargetArrow />
@@ -117,7 +117,7 @@ const Dashboard = () => {
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/userDashboard">
+                  <NavLink to="/dashboard/myWinning-contest">
                     <li className="mb-2">
                       <span className=" flex items-center">
                         <FaPersonThroughWindow className="text-xl" />
@@ -125,7 +125,7 @@ const Dashboard = () => {
                       </span>
                     </li>
                   </NavLink>
-                  <NavLink to="/dashboard/userDashboard">
+                  <NavLink to="/dashboard/myProfile">
                     <li className="mb-2">
                       <span className=" flex items-center">
                         <ImProfile className="text-xl" />
@@ -189,19 +189,19 @@ const Dashboard = () => {
             <span>
               {isAdmin ? (
                 <>
-                  <p className="bg-gradient-to-br from-lime-400 to-green-700 text-transparent bg-clip-text font-bold text-[12px] lg:text-2xl">
+                  <p className="bg-gradient-to-br from-cyan-400 to-cyan-700 text-transparent bg-clip-text font-bold text-[12px] lg:text-2xl">
                     (Admin)
                   </p>
                 </>
               ) : isCreator ? (
                 <>
-                  <p className="bg-gradient-to-br from-lime-400 to-green-700 text-transparent bg-clip-text font-bold text-[12px] lg:text-2xl">
+                  <p className="bg-gradient-to-br from-cyan-400 to-cyan-700 text-transparent bg-clip-text font-bold text-[12px] lg:text-2xl">
                     (Creator)
                   </p>
                 </>
               ) : (
                 <>
-                  <p className="bg-gradient-to-br from-lime-400 to-green-700 text-transparent bg-clip-text font-bold text-[12px] lg:text-2xl">
+                  <p className="bg-gradient-to-br from-cyan-400 to-cyan-700 text-transparent bg-clip-text font-bold text-[12px] lg:text-2xl">
                     (User)
                   </p>
                 </>
@@ -209,13 +209,15 @@ const Dashboard = () => {
             </span>
             <ul
               tabIndex={0}
-              className=" mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content text-white  rounded-md bg-slate-950 w-52"
+              className=" mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content text-black rounded-md bg-slate-200 w-52"
             >
               <li>
                 <a className="justify-between">
                   {user?.displayName}
                   {isAdmin ? (
                     <span className="badge">Admin</span>
+                  ) : isCreator ? (
+                    <span className="badge">Creator</span>
                   ) : (
                     <>
                       <span className="badge">User</span>
@@ -225,16 +227,13 @@ const Dashboard = () => {
               </li>
               {isAdmin ? (
                 <li className="hover:text-lime-700">
-                  <Link to="/dashboard/adminDashboard">Dashboard</Link>
+                  <Link to="/dashboard/myProfile">Profile</Link>
                 </li>
               ) : (
                 <li>
-                  <Link to="/dashboard/userDashboard">Dashboard</Link>
+                  <Link to="/dashboard/myProfile">Profile</Link>
                 </li>
               )}
-              <li>
-                <a>Settings</a>
-              </li>
               {user ? (
                 <li>
                   <button onClick={logOut}>Logout</button>

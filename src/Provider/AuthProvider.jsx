@@ -55,10 +55,11 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const updateUserProfile = (name, photo) => {
+  const updateUserProfile = (name, photo, address) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
+      address: address,
     });
   };
 

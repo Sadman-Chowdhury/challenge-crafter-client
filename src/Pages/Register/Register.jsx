@@ -216,7 +216,7 @@ const Register = () => {
                     Already have an account?
                     <Link
                       to="/login"
-                      className="hover:underline hover:text-purple-500 text-gray-600"
+                      className="hover:underline hover:text-cyan-500 text-gray-600"
                     >
                       Login
                     </Link>
@@ -225,7 +225,7 @@ const Register = () => {
                     {loading ? (
                       <button
                         type="submit"
-                        className="bg-purple-800 lg:w-[400px] rounded-md py-3 text-white flex items-center justify-center"
+                        className="bg-cyan-800 lg:w-[400px] rounded-md py-3 text-white flex items-center justify-center"
                       >
                         <ImSpinner9 className="animate-spin" />
                       </button>

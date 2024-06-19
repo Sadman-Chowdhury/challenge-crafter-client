@@ -1,66 +1,87 @@
 [
   {
-    "contestName": "Design Thinking Challenge",
-    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
-    "participantsCount": 150,
-    "description": "A challenge to innovate through design thinking principles.",
-    "contestType": "design",
-    "contestPrize": "Laptop"
+    "_id": "666c73f2730cfa3f0b4b0a84",
+    "contestName": "Graphic Marchant GO 2024",
+    "contestType": "Image Design",
+    "startDate": "2024-06-28T16:45:04.000Z",
+    "endDate": "2024-07-05T16:45:04.000Z",
+    "contestPrice": "12",
+    "contestPrize": "3200",
+    "description": "Graphic Marchant GO 2024 is the ultimate event for graphic design enthusiasts and professionals, providing a prestigious platform to showcase their creativity and innovation. This premier competition invites designers from around the world to submit their most compelling and original works across various categories, including digital art, branding, typography, and more. With a focus on pushing the boundaries of visual communication, Graphic Marchant GO 2024 offers participants the opportunity to gain international recognition and connect with industry leaders. Winners will receive prestigious awards, including cash prizes, feature opportunities in top design publications, and exclusive networking events with influential figures in the graphic design community. Whether you're an emerging talent or an established designer, Graphic Marchant GO 2024 is your chance to shine, inspire others, and advance your career in the dynamic world of graphic design. Unleash your creativity and join us for this transformative experience.\n",
+    "taskSubmissionText": "You Have Submit a logo design.",
+    "participantsCount": 3,
+    "status": "accepted",
+    "image": "https://i.ibb.co/zXFvdRR/graphic.png",
+    "contestCreator": {
+      "name": "sadman",
+      "image": "https://i.ibb.co/MCgT9gk/sadmanpic.png",
+      "email": "sadman.ch@gmail.com"
+    }
   },
   {
-    "contestName": "Design Thinking Challenge",
-    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
-    "participantsCount": 150,
-    "description": "A challenge to innovate through design thinking principles.",
-    "contestType": "design",
-    "contestPrize": "Laptop"
+    "_id": "666c744d730cfa3f0b4b0a85",
+    "contestName": "Gamer's Gauntlet Showdown",
+    "contestType": "Gaming Review",
+    "startDate": "2024-07-06T16:47:06.000Z",
+    "endDate": "2024-07-18T16:47:06.000Z",
+    "contestPrice": "24",
+    "contestPrize": "22000",
+    "description": "Gamer's Gauntlet Showdown is the ultimate test of skill, strategy, and speed, bringing together top gamers from around the globe for an exhilarating competition. This high-stakes contest features a variety of popular gaming titles across different genres, including first-person shooters, real-time strategy games, and multiplayer online battle arenas. Participants will battle it out in intense matches, showcasing their abilities and aiming for glory. The Gamer's Gauntlet Showdown offers substantial rewards, including cash prizes, exclusive gaming gear, and sponsorship opportunities from leading brands. Additionally, the event provides a platform for gamers to connect with industry professionals, streamers, and fellow competitors, fostering a vibrant and supportive community. Whether you're a seasoned pro or an aspiring newcomer, the Gamer's Gauntlet Showdown is your chance to shine, prove your prowess, and make a name for yourself in the competitive gaming world. Join us and experience the thrill of elite-level gaming competition.\n\n\n\n\n\n\n",
+    "taskSubmissionText": "You Have Submit a  Games review based on this.",
+    "participantsCount": 4,
+    "status": "accepted",
+    "image": "https://i.ibb.co/LRMb1GD/game1.jpg",
+    "contestCreator": {
+      "name": "sadman",
+      "image": "https://i.ibb.co/MCgT9gk/sadmanpic.png",
+      "email": "sadman.ch@gmail.com"
+    },
+    "submissions": [
+      {
+        "name": "Mr. Jhon",
+        "email": "jhon@gmail.com",
+        "photo": "https://i.ibb.co/Mhcwmz5/user2.jpg",
+        "date": "2024-06-16T16:11:31.414Z",
+        "contestName": "Gamer's Gauntlet Showdown",
+        "userTask": "https://replit.com/@anis2382/TestCase#Linked-List%20Note.txt"
+      },
+      {
+        "name": "Mr. Jhon",
+        "email": "jhon@gmail.com",
+        "photo": "https://i.ibb.co/Mhcwmz5/user2.jpg",
+        "date": "2024-06-16T16:15:59.532Z",
+        "contestName": "Gamer's Gauntlet Showdown",
+        "userTask": "https://www.pdfdrive.com/"
+      }
+    ]
   },
   {
-    "contestName": "Design Thinking Challenge",
-    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
-    "participantsCount": 150,
-    "description": "A challenge to innovate through design thinking principles.",
-    "contestType": "design",
-    "contestPrize": "Laptop"
-  },
-  {
-    "contestName": "Design Thinking Challenge",
-    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
-    "participantsCount": 150,
-    "description": "A challenge to innovate through design thinking principles.",
-    "contestType": "coding",
-    "contestPrize": "Laptop"
-  },
-  {
-    "contestName": "Design Thinking Challenge",
-    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
-    "participantsCount": 150,
-    "description": "A challenge to innovate through design thinking principles.",
-    "contestType": "writing",
-    "contestPrize": "Laptop"
-  },
-  {
-    "contestName": "Design Thinking Challenge",
-    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
-    "participantsCount": 150,
-    "description": "A challenge to innovate through design thinking principles.",
-    "contestType": "writing",
-    "contestPrize": "Laptop"
-  },
-  {
-    "contestName": "Design Thinking Challenge",
-    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
-    "participantsCount": 150,
-    "description": "A challenge to innovate through design thinking principles.",
-    "contestType": "writing",
-    "contestPrize": "Laptop"
-  },
-  {
-    "contestName": "Design Thinking Challenge",
-    "image": "https://i.ibb.co/Brgm9xZ/blog2.jpg",
-    "participantsCount": 150,
-    "description": "A challenge to innovate through design thinking principles.",
-    "contestType": "AI",
-    "contestPrize": "Laptop"
+    "_id": "666d38195f78f64851de1ee0",
+    "contestName": "The Poetry Pulse Competition",
+    "contestType": "Article Writing",
+    "startDate": "2024-07-05T06:43:04.000Z",
+    "endDate": "2024-08-16T06:43:04.000Z",
+    "contestPrice": "44",
+    "contestPrize": "20000",
+    "description": "The Poetry Pulse Competition is an annual event that seeks to celebrate the art of poetry and the unique voices of poets worldwide. Open to poets of all ages and levels, this contest encourages participants to submit their most poignant and evocative poems. The theme is open, allowing for a wide range of topics and styles. Submissions are evaluated based on originality, emotional depth, and technical skill by a panel of distinguished poets and literary critics. Winners will receive cash prizes, have their work published in a respected poetry anthology, and be invited to perform their poems at a prestigious poetry reading event. Additionally, there are special awards for young poets and thematic excellence. The Poetry Pulse Competition aims to inspire and support poets, providing them with a platform to share their work and connect with a broader literary community.\n\n\n\n\n\n\n",
+    "taskSubmissionText": "You Have Submit a Article based on this.",
+    "participantsCount": 6,
+    "status": "accepted",
+    "image": "https://i.ibb.co/rpmRPCy/writing1.png",
+    "contestCreator": {
+      "name": "Sadman",
+      "image": "https://i.ibb.co/nnXM1dK/Screenshot-2024-06-15-122100.png",
+      "email": "mama.mami@gmail.com"
+    },
+    "submissions": [
+      {
+        "name": "Sadman",
+        "email": "mama.mami@gmail.com",
+        "photo": "https://i.ibb.co/nnXM1dK/Screenshot-2024-06-15-122100.png",
+        "date": "2024-06-16T16:35:45.022Z",
+        "contestName": "The Poetry Pulse Competition",
+        "userTask": "https://github.com/"
+      }
+    ]
   }
 ]

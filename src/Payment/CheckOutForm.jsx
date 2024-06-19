@@ -12,6 +12,7 @@ import UseAuth from "../Hooks/UseAuth";
 import axiosSecure from "../Api";
 import { payment } from "../Api/utils";
 import { UpdateParticipantsCounts } from "../Api/contestApi";
+import { toast } from "react-hot-toast";
 
 const CheckOutForm = () => {
   const stripe = useStripe();
@@ -108,7 +109,10 @@ const CheckOutForm = () => {
       // Update participants count
       await UpdateParticipantsCounts(contest._id);
       const data = await payment(paymentInfo);
-      // console.log(data);
+      console.log(data);
+
+      toast.success("Successfully registered the course");
+      navigate("/dashboard/myParticipatedContest");
     }
   };
 
@@ -190,7 +194,7 @@ const CheckOutForm = () => {
               disabled={!stripe || !clientSecret || paymentCompleted}
             >
               <span className="flex items-center gap-1">
-                Pay {contest?.contestPrice}
+                Pay ${contest?.contestPrice}
                 <GiPayMoney className="text-xl" />
               </span>
             </button>

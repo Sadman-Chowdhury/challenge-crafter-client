@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Container from "../../../Container";
 import UseToGetMyParticipatedContest from "./../../../Hooks/UseToGetMyParticipatedContest";
 import { MdOutlineComment } from "react-icons/md";
 import UseAllContest from "../../../Hooks/UseAllContest";
+import { Link } from "react-router-dom";
 
 const MyParticipatedContest = () => {
   const [originalMyContests] = UseToGetMyParticipatedContest();
@@ -57,7 +58,7 @@ const MyParticipatedContest = () => {
                 <th>Prize Money</th>
                 <th>Payment</th>
                 <th>Participants Count</th>
-                <th>Submission</th>
+                <th>Submit Task</th>
               </tr>
             </thead>
             <tbody>
@@ -89,9 +90,11 @@ const MyParticipatedContest = () => {
                     {getParticipantsCount(item.contest._id)}
                   </td>
                   <td>
-                    <button className="text-4xl text-green-500">
-                      <MdOutlineComment />
-                    </button>
+                    <Link to={`/dashboard/submit-contest-task/${item?._id}`}>
+                      <button className="text-4xl text-green-500">
+                        <MdOutlineComment />
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               ))}

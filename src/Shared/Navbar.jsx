@@ -2,11 +2,12 @@ import { Link, NavLink } from "react-router-dom";
 import Container from "./../Container";
 import logo from "../assets/Images/logo.png";
 import UseAuth from "../Hooks/UseAuth";
+import avater from "../assets/Images/avater.jpeg";
 
 const Navbar = () => {
   // =================================================================
   const { user, logOut } = UseAuth();
-  // console.log(user);
+  console.log(user);
 
   const navLinks = (
     <>
@@ -34,21 +35,10 @@ const Navbar = () => {
           All Contest
         </NavLink>
       </li>
+
       <li>
         <NavLink
-          to="/dummy"
-          className={({ isActive }) =>
-            isActive
-              ? "bg-cyan-500 font-bold text-white"
-              : "bg-transparent text-black"
-          }
-        >
-          Leader-board
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/about"
+          to="/aboutUs"
           className={({ isActive }) =>
             isActive ? "bg-cyan-500 text-white" : "bg-transparent text-black"
           }
@@ -113,14 +103,14 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img alt="User avatar" src={user?.photoURL} />
+                  <img alt="User avatar" src={user?.photoURL || avater} />
                 </div>
               </div>
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li className="ml-3">{user?.displayName}</li>
+                <li className="ml-3 mb-2 font-bold">{user?.displayName}</li>
                 <li>
                   <Link to="/dashboard">Dashboard</Link>
                 </li>

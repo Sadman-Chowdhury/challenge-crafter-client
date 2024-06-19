@@ -3,6 +3,7 @@ import { bannerContests } from "../../../Api/contestApi";
 import Marquee from "react-fast-marquee";
 import UseAllContest from "./../../../Hooks/UseAllContest";
 import { Link } from "react-router-dom";
+
 const Banner = () => {
   const [contests, setContests] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -33,8 +34,16 @@ const Banner = () => {
   const filteredInitialContest = allContests.filter(
     (contest) => contest.status === "accepted"
   );
+
   return (
-    <div className="h-80 md:h-96 lg:h-screen mt-4 relative">
+    <div
+      className="h-80 md:h-96 lg:h-screen mt-2 relative bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage:
+          "url('https://i.ibb.co/X5q3Pn0/jason-leung-Xaanw0s0p-Mk-unsplash.jpg')",
+      }}
+    >
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <div>
         <Marquee direction="right" speed={100} pauseOnHover={true}>
           {contests.length > 0
@@ -78,12 +87,12 @@ const Banner = () => {
               ))}
         </Marquee>
       </div>
-      <div className="flex items-center justify-center lg:py-32">
-        <div className="">
-          <h2 className="text-2xl animate-pulse lg:text-5xl font-bold bg-gradient-to-br from-red-700 to-cyan-600 text-transparent bg-clip-text mb-4">
+      <div className="flex items-center justify-center lg:py-32 relative z-10">
+        <div className="text-center">
+          <h2 className="text-2xl lg:text-5xl font-bold bg-gradient-to-br from-white to-cyan-600 text-transparent bg-clip-text mb-4">
             Welcome to Challenge Crafter
           </h2>
-          <p className="text-base text-slate-600 sm:text-lg px-2 md:text-xl lg:text-xl">
+          <p className="text-base text-slate-100 sm:text-lg px-2 md:text-xl lg:text-xl">
             The ultimate platform where innovation meets recognition!
           </p>
           <div className="mt-6 flex items-center justify-center">
@@ -99,7 +108,7 @@ const Banner = () => {
               />
               <button
                 type="submit"
-                className="border-2 rounded-sm px-4 py-1 bg-white font-bold hover:bg-cyan-400 hover:text-white cursor-pointer"
+                className="border-2 animate-pulse rounded-sm px-4 py-1 bg-cyan-800 text-white font-bold hover:bg-cyan-400 hover:text-white cursor-pointer"
               >
                 Search
               </button>

@@ -62,7 +62,6 @@ const MyCreatedContest = () => {
                 <th>Img</th>
                 <th>Status</th>
                 <th>Admin Comment</th>
-                <th>Submission</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -92,11 +91,6 @@ const MyCreatedContest = () => {
                       className="text-4xl text-green-500"
                     >
                       <MdOutlineComment />
-                    </button>
-                  </td>
-                  <td>
-                    <button className="bg-cyan-600 px-2 py-1 rounded-2xl text-white font-bold">
-                      Submission
                     </button>
                   </td>
 
